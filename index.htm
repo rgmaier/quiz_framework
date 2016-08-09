@@ -18,9 +18,10 @@
     </style>
 	<script>
 	var currentLevel = 0;
-	var questionsInCurrentLevel = [];
+	var questionsInCurrentLevel = [0,1];
 	var score = 0;
-
+	var correctAnswer = "";
+	
 	function shuffleArray(array) {
 		for (var i = array.length - 1; i > 0; i--) {
 			var j = Math.floor(Math.random() * (i + 1));
@@ -33,8 +34,9 @@
 	function getNewQuestion(){
 		var i = Math.floor((Math.random()*2));
 		$.getJSON("questions.json",function (data) {
-			var answer = shuffleArray([data.questions[i].answer1,data.questions[i].answer2,data.questions[i].answer3,data.questions[i].answer4]);
-			$("#guess").attr("src",data.questions[i].url);
+			var answer = shuffleArray([data.level[currentLevel].questions[i].answer1,data.level[currentLevel].questions[i].answer2,data.level[currentLevel].questions[i].answer3,data.level[currentLevel].questions[i].answer4]);
+			correctAnswer = data.level[currentLevel].questions[i].correctAnswer;
+			$("#guess").attr("src",data.level[currentLevel].questions[i].url);
 			$("#a1").text(answer[0]);
 			$("#a2").text(answer[1]);
 			$("#a3").text(answer[2]);
@@ -44,10 +46,10 @@
 	}
 	
 	function checkIfCorrect(answer){
-		if(question.getCorrectAnswer(answer.innerText)){
+		if(answer.innerText == correctAnswer){
 			$("#check").text("correct");
-		score++;
-		console.log(score);
+			score++;
+			correctAnswer = "";
 		}
 		else{
 			$("#check").text("incorrect");}
