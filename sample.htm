@@ -9,63 +9,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
-	<style id="custom-icon">
-        .ui-icon-custom:after {
-			background-image: url("../_assets/img/glyphish-icons/21-skull.png");
-			background-position: 3px 3px;
-			background-size: 70%;
-		}
-    </style>
-	<script>
-	var currentLevel = 0;
-	var questionsInCurrentLevel = [0,1];
-	var score = 0;
-	var correctAnswer = "";
-	
-	function shuffleArray(array) {
-		for (var i = array.length - 1; i > 0; i--) {
-			var j = Math.floor(Math.random() * (i + 1));
-			var temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-		}
-		return array;
-	}
-	function getNewQuestion(){
-		var i = Math.floor((Math.random()*2));
-		$.getJSON("questions.json",function (data) {
-			var answer = shuffleArray([data.level[currentLevel].questions[i].answer1,data.level[currentLevel].questions[i].answer2,data.level[currentLevel].questions[i].answer3,data.level[currentLevel].questions[i].answer4]);
-			correctAnswer = data.level[currentLevel].questions[i].correctAnswer;
-			$("#guess").attr("src",data.level[currentLevel].questions[i].url);
-			$("#a1").text(answer[0]);
-			$("#a2").text(answer[1]);
-			$("#a3").text(answer[2]);
-			$("#a4").text(answer[3]);
-		});
-
-	}
-	
-	function checkIfCorrect(answer){
-		if(answer.innerText == correctAnswer){
-			$("#check").text("correct");
-			score++;
-			correctAnswer = "";
-		}
-		else{
-			$("#check").text("incorrect");}
-	}
-
-	function clearScore(){
-		score = 0;
-	}
-
-	function setScore(){
-	
-	}
-
-	
-	
-	</script>
+	<script src="quiz_framework.js"></script>
 </head>
 <body>
 <div data-role="page" id="page_home">
