@@ -23,11 +23,14 @@
 	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
 	<a href="#page_play" class="ui-btn" id="startgame" onClick="getNewQuestion()">Let's Play!</a>
 	</div>
-	
+	<div data-role="popup" id="popup_contact" data-overlay-theme="b" class="ui-content">
+		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <p>If you have questions or recommendations, please contact the author on <a href="https://github.com/rgmaier/quiz_framework">GitHub</a>.</p>
+    </div>
 	<div data-role="footer">
 		<div data-role="navbar">
 		<ul>
-		  <li><a href="#page_contact" data-icon="info">Contact</a></li>
+		  <li><a href="#popup_contact" data-icon="info" data-rel="popup" data-position-to="window" data-transition="fade">Contact</a></li>
 		</ul>
 	</div>
 	</div>
@@ -35,42 +38,36 @@
 
 <div data-role="page" id="page_play">
 	<div data-role="header">
-	<h1>Let's play</h1>
-		
-	
+		<h1>Let's play</h1>	
 	</div>
 
-	<div data-role="main" class="ui-content">
-	<img src="#" width="100%" height="100%" id="guess"></img>
-	&nbsp;</br>
-	<ul data-role="listview">
-      <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a1"></a></li>
-      <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a2"></a></li>
-      <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a3"></a></li>
-	  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a4"></a></li>
-    </ul>
+	<div data-role="main" class="ui-content" id="quiz_main">
+		<img src="#" width="100%" height="100%" id="guess"></img>
+		&nbsp;</br>
+		<ul data-role="listview">
+		  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a1"></a></li>
+		  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a2"></a></li>
+		  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a3"></a></li>
+		  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a4"></a></li>
+		</ul>
 	</div>
 	
-	<div data-role="popup" id="answerCheck" data-overlay-theme="b" data-dismissible="false" class="ui-content">
+	<div data-role="popup" id="answerCheck" data-overlay-theme="b" data-dismissible="false" class="ui-content" data-position-to="window">
         This answer is <b id="check"></b>!</br>
 		</br>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-left" data-rel="back" onClick="getNewQuestion()">Next question</a>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-left" onClick="getNewQuestion()">Next question</a>
     </div>
 	
 	<!-- This popup shows the score and the current level. -->
 	<div data-role="popup" id="popup_score" data-overlay-theme="b" class="ui-content">
 	<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-   
-        This answer is <b id="check"></b>!</br>
-		</br>
-
+		<p id="popup_score_text"></p>
     </div>
 	
 	<!-- This popup shows the contact information of the author. -->
 	<div data-role="popup" id="popup_contact" data-overlay-theme="b" class="ui-content">
 		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-        <p>This answer is <b id="check"></b>!</br></p>
-		</br>
+        <p>If you have questions or recommendations, please contact the author on <a href="https://github.com/rgmaier/quiz_framework">GitHub</a>.</p>
     </div>
 	
 	<div data-role="footer">
@@ -79,6 +76,24 @@
 		  <li><a href="#page_home" data-icon="home" onClick="clearScore()">Home</a></li>
 		  <li><a href="#popup_score" data-icon="grid" data-rel="popup" data-position-to="window" data-transition="fade" onClick="setScore()">Current Score</a></li>
 		  <li><a href="#popup_contact" data-icon="info" data-rel="popup" data-position-to="window" data-transition="fade">Contact</a></li>
+		</ul>
+	</div>
+	</div>
+</div>
+<div data-role="page" id="page_done">
+	<div data-role="header">
+		<h1>Congratulations</h1>
+	</div>
+
+	<div data-role="main" class="ui-content">
+	<div>
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+	</div>
+	
+	<div data-role="footer">
+		<div data-role="navbar">
+		<ul>
+			<li><a href="#page_home" data-icon="home" onClick="clearScore()">Home</a></li>
 		</ul>
 	</div>
 	</div>
