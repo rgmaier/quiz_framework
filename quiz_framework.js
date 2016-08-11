@@ -40,6 +40,8 @@ function getNewQuestion(){
 	
 	if(currentLevel >= maxLevel && questionsInCurrentLevel.length ==0){
 		//For some reason, this does not work
+		
+		$("#result").text("Congratulations! Your final score is " + score + " and you reached level "+(currentLevel+1)+".");
 		clearScore();
 		window.location.replace("./#page_done");
 	}else{
