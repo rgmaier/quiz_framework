@@ -1,9 +1,10 @@
 //Questions per Level are set here, standard is 5
-var questionsLevel = 2;
+var questionsLevel = 5;
 
 //Max. level is set here, standard is 5 (starts at 0)
 var maxLevel = 0;
 var currentLevel = 0;
+var remainingLives = 3;
 
 var questionsInCurrentLevel = [];
 var score = 0;
@@ -38,9 +39,8 @@ function getQuestionOrder(){
 
 function getNewQuestion(){
 	
-	if(currentLevel >= maxLevel && questionsInCurrentLevel.length ==0){
-		//For some reason, this does not work
-		
+	if(currentLevel >= maxLevel && questionsInCurrentLevel.length ==0||remainingLives == 0){
+	
 		$("#result").text("Congratulations! Your final score is " + score + " and you reached level "+(currentLevel+1)+".");
 		clearScore();
 		window.location.replace("./#page_done");
@@ -72,16 +72,20 @@ function getNewQuestion(){
 function checkIfCorrect(answer){
 	if(answer.innerText == correctAnswer){
 		$("#check").text("correct");
+		$("#lives_remaining").text(remainingLives);
 		score++;
 		correctAnswer = "";
 	}
 	else{
-		$("#check").text("incorrect");}
+		$("#check").text("incorrect");
+		remainingLives--;
+		$("#lives_remaining").text(remainingLives);}
 }
 
 function clearScore(){
 	score = 0;
 	currentLevel = 0;
+	remainingLives = 3;
 	getQuestionOrder();
 }
 
