@@ -1,0 +1,23 @@
+{
+    "questions":[
+        {
+            "North America":[
+                {
+                    "name": "Breckenridge"
+                },
+                {
+                    "name": "Vail"
+                }
+            ]
+        },{
+            "Europe":[
+                {
+                    "name": "Kitzbühel"
+                },
+                {
+                    "name": "Val d'Isere"
+                }
+            ]
+        }
+    ]
+}
