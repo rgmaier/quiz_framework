@@ -16,7 +16,7 @@ $(document).ready(function(){
 
 $(window).unload(function(){
 	clearScore();
-	window.location.replace("./#page_home");
+	window.location.replace("./index.htm#page_home");
 });
 
 
@@ -43,7 +43,7 @@ function getNewQuestion(){
 	
 		$("#result").text("Congratulations! Your final score is " + score + " and you reached level "+(currentLevel+1)+".");
 		clearScore();
-		window.location.replace("./#page_done");
+		window.location.replace("./index.htm#page_done");
 	}else{
 		if(questionsInCurrentLevel.length == 0){
 			currentLevel++;
