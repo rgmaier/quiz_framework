@@ -1,0 +1,64 @@
+#main_canvas{
+    display: none;
+}
+#answer-box{
+    margin-top: 8pt;
+    display: none;
+}
+p{
+    text-align: justify;
+}
+.navigation{
+    overflow:hidden;   
+    width: 100%;
+    text-align: center;
+}
+.nav_outer{
+    border: 1px solid #422; 
+    margin-bottom: 5px;
+    display: inline-table;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+}
+.nav_inner{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+#nav_na .nav_outer{
+    background-image: url('Continents.svg');
+}
+#nav_sa .nav_outer{
+    background-image: url('Continents.svg');
+}
+#nav_eu .nav_outer{
+    background-image: url('Continents.svg');
+}
+#nav_as .nav_outer{
+    background-image: url('Continents.svg');
+}
+#nav_af .nav_outer{
+    background-image: url('Continents.svg');
+}
+.ui-page{
+    background-color: #fff;
+}
+@media only screen and (min-width: 600px){
+    .ui-page {
+        width: 600px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+        border-right: 1px #666 outset !important;
+        border-left: 1px #666 outset !important;
+    }
+    .ui-footer{
+        width: 600px !important;
+        margin: 0 auto !important;
+    }
+}
