@@ -8,6 +8,34 @@
 p{
     text-align: justify;
 }
+
+hr{
+    width: 50%;
+}
+
+.popup-nav{
+    text-align: center;
+    padding: 0;
+    min-width: 200px;
+    border-radius: 15px;
+    }
+#popup-continent{
+    font-size: 1.2em;
+    background-color: #000080;
+    color: #fff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 15px;
+}
+#popup-score{
+    margin: 15px 0 20px 0px;
+}
+
+.pop-btn{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 .navigation{
     overflow:hidden;   
     width: 100%;
