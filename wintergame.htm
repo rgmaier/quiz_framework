@@ -40,6 +40,14 @@
             else{
                 $('#popup-pts').text(localStorage.getItem(elementID));
             }
+            sessionStorage.setItem("nav",elementID);
+        }
+
+        function play(){
+            updateContent(sessionStorage.nav);
+            $(".navigation, #welcome-text").hide();
+            $("#main_canvas, #answer-box").show();
+            $("#menu").popup("close");
         }
     </script>
 </head>
@@ -73,10 +81,12 @@
                     </br>
                     <span>correct</span>
                 </div>
-                <button class="ui-btn pop-btn">Play</button>
+                <button class="ui-btn pop-btn" onclick="play()">Play</button>
             </div>
-            <p>Can you guess the ski area by their trail map? Click on one of the circles and find out!</br></br>
-            If you like the trail maps, why don't you head over to our partners at <a href="https://www.circlesquarediamond.com/">CircleSquareDiamond</a> to get a print of your favorite resort!</p>
+            <div id="welcome-text">
+                <p>Can you guess the ski area by their trail map? Click on one of the circles and find out!</br></br>
+                If you like the trail maps, why don't you head over <a href="https://www.circlesquarediamond.com/">CircleSquareDiamond</a> to get a print of your favorite resort!</p>
+            </div>
         </div>
         <canvas id="main_canvas" width="568" height = "390"></canvas>
         <ul data-role="listview" id="answer-box">
