@@ -15,19 +15,48 @@
         $(document).ready(function(){
             //updateImageMap();
             localStorage.setItem("nav_na","5");
-        });
-
-        $(window).resize(function(){
-            updateImageMap();
+            localStorage.setItem("solved",[]);
+            
         });
 
         var navigation = {nav_na:"North America", nav_sa: "South America", nav_af: "Africa", nav_as: "Asia & Oceania", nav_eu:"Europe"};
         var max_pts = {nav_na: 100, nav_sa:100, nav_af:0, nav_as:50, nav_eu:50};
 
-        function loadQuestions(){}
+        function loadQuestion(continent){
+            
+            $.ajax({
+                url: "questions_new.json",
+                beforeSend: function(xhr){
+                    if (xhr.overrideMimeType)
+                    {
+                    xhr.overrideMimeType("application/json");
+                    }
+                },
+                dataType: 'json',
+                success: function(data){
+                    var question=[];
+                    for(i = 0; i<data.skiareas[navigation[sessionStorage.nav]].length;i++)
+                    {
+                        if(!localStorage.solved.includes(data.skiareas[navigation[sessionStorage.nav]][i].name)){
+                            question.push(data.skiareas[navigation[sessionStorage.nav]][i].name);
+                            question.push(data.skiareas[navigation[sessionStorage.nav]][i].img);
+                            break;
+                        }
+                    }
+                    var i = 0;
+                    while(i<4){
+
+                        if(!localStorage.solved.includes(question.push(data.skiareas[navigation[sessionStorage.nav]][].name))){}
+                    }
+                    console.log(question);
+                }
+            });
+        //console.log(questions[0][0][0]);
+        }
         
-        function updateContent(){
+        function updateContent(continent){
             var pathname = window.location.hash;
+            loadQuestion();
         }
 
         function updateNavContent(elementID){
@@ -49,9 +78,15 @@
             $("#main_canvas, #answer-box").show();
             $("#menu").popup("close");
         }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+       
     </script>
 </head>
-<body onload="updateContent()">
+<body>
 <div data-role="page" id="page_home">
     <div data-role="header">
 	    <h1>Welcome!</h1>

@@ -1,23 +1,38 @@
 {
-    "questions":[
-        {
-            "North America":[
-                {
-                    "name": "Breckenridge"
-                },
-                {
-                    "name": "Vail"
-                }
-            ]
-        },{
-            "Europe":[
-                {
-                    "name": "Kitzbühel"
-                },
-                {
-                    "name": "Val d'Isere"
-                }
-            ]
-        }
-    ]
+	"skiareas": {
+		"North America": [{
+				"name": "Breckenridge",
+				"img": "a.jpg"
+			},
+			{
+				"name": "Vail",
+				"img": "a.jpg"
+			},
+			{
+				"name": "Alpine Meadows",
+				"img":"a.jpg"
+			},
+			{
+				"name": "Aspen Mountain",
+				"img":"a.jpg"
+			},
+			{
+				"name": "Beaver Creek",
+				"img":"a.jpg"
+			},
+			{
+				"name": "Beech Mountain",
+				"img":"a.jpg"
+			}
+		],
+		"Europe": [{
+				"name": "Kitzbuehel",
+				"img": "a.jpg"
+			},
+			{
+				"name": "Val d'Isere",
+				"img": "a.jpg"
+			}
+		]
+	}
 }
