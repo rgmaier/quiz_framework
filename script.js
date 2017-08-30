@@ -1,6 +1,9 @@
 $(document).ready(function(){
     //updateImageMap();
     localStorage.setItem("nav_na","5");
+
+    //This does not work, localStorage only accepts strings...
+    //Solution: stringify when save, .parse when load
     localStorage.setItem("solved",[]);
     
 });
@@ -45,10 +48,12 @@ function loadQuestion(callback){
 }
 
 function updateContent(result){
-    var pathname = window.location.hash;
+    $('#nextbtn').hide();
+    $(".correct").removeClass("correct"); 
     var answers = [result[0], result[2], result[3], result[4]];
+    sessionStorage.setItem("answer",result[0]);
+    console.log(sessionStorage.answer);
     shuffleArray(answers);
-    console.log(result[1]);
     $('#main_canvas').attr("src",result[1]);
     $('#answer-box').find('a').each(function(){
         $(this).text(answers[answers.length-1]);
@@ -80,3 +85,15 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function checkAnswer(answer){
+    if($(answer).text()==sessionStorage.answer){
+        //Change background color to green, increase counter by one, add area to solved list
+        $(answer).addClass("correct");
+       
+        //localStorage["solved"].push(sessionStorage.answer);
+        //sessionStorage.answer = "";
+        
+        $('#nextbtn').show();
+        console.log("success");
+    }
+}

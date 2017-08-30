@@ -1,9 +1,19 @@
-#main_canvas{
-    display: none;
+.hidden{
+    display:none;
 }
+
+.correct{
+    background-color: #006000 !important;
+    color: #fff !important;
+    text-shadow: 0 0 !important;
+}
+
+#nextbtn{
+    margin-top:35px;
+}
+
 #answer-box{
     margin-top: 8pt;
-    display: none;
 }
 p{
     text-align: justify;

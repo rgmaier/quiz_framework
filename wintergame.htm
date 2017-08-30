@@ -50,13 +50,14 @@
                 If you like the trail maps, why don't you head over <a href="https://www.circlesquarediamond.com/">CircleSquareDiamond</a> to get a print of your favorite resort!</p>
             </div>
         </div>
-        <img id="main_canvas" width="568" height = "390" src = "#">
-        <ul data-role="listview" id="answer-box">
-		  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a1"></a></li>
-		  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a2"></a></li>
-		  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a3"></a></li>
-		  <li><a href="#answerCheck" data-rel="popup" data-position-to="window" data-transition="fade" onClick="checkIfCorrect(this)" id="a4"></a></li>
-		</ul> 
+        <img id="main_canvas" class="hidden" width="568" height = "390" src = "#">
+        <ul data-role="listview" id="answer-box" class="hidden">
+		  <li><a href="#" onClick="checkAnswer(this)" id="a1"></a></li>
+		  <li><a href="#" onClick="checkAnswer(this)" id="a2"></a></li>
+		  <li><a href="#" onClick="checkAnswer(this)" id="a3"></a></li>
+		  <li><a href="#" onClick="checkAnswer(this)" id="a4"></a></li>
+        </ul> 
+        <button class="ui-btn hidden" onclick="play()" id="nextbtn">Next</button>
    </div>    
 
    <div data-role="footer" data-position="fixed">
