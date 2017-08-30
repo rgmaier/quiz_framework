@@ -2,27 +2,27 @@
 	"skiareas": {
 		"North America": [{
 				"name": "Breckenridge",
-				"img": "a.jpg"
+				"img": "a.jpeg"
 			},
 			{
 				"name": "Vail",
-				"img": "a.jpg"
+				"img": "a.jpeg"
 			},
 			{
 				"name": "Alpine Meadows",
-				"img":"a.jpg"
+				"img":"a.jpeg"
 			},
 			{
 				"name": "Aspen Mountain",
-				"img":"a.jpg"
+				"img":"a.jpeg"
 			},
 			{
 				"name": "Beaver Creek",
-				"img":"a.jpg"
+				"img":"a.jpeg"
 			},
 			{
 				"name": "Beech Mountain",
-				"img":"a.jpg"
+				"img":"a.jpeg"
 			}
 		],
 		"Europe": [{
