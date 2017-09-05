@@ -60,6 +60,7 @@ function loadQuestion(callback){
 function updateContent(result){
     $('#nextbtn').hide();
     $(".correct").removeClass("correct"); 
+    $(".false").removeClass("false");
     if(result[0]=="finished"){
         menu(NULL);
     }
@@ -96,8 +97,9 @@ function play(){
 function menu(elementID){
     $(".navigation, #welcome-text").show();
     $("#main_canvas, #answer-box").hide();
+    $('#nextbtn').hide();
     console.log(elementID);
-    $("#home").removeClass(".ui-btn-active");
+    $(".ui-btn-active").removeClass("ui-btn-active");
     sessionStorage.clear();
 }
 
