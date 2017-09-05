@@ -8,6 +8,12 @@
     text-shadow: 0 0 !important;
 }
 
+.false{
+    background-color: #FF0000 !important;
+    color: #fff !important;
+    text-shadow: 0 0 !important;
+}
+
 #nextbtn{
     margin-top:35px;
 }

@@ -1,10 +1,11 @@
 $(document).ready(function(){
     //updateImageMap();
-    localStorage.setItem("nav_na","5");
-
+    //localStorage.setItem("nav_na","5");
+    localStorage.clear();
+    sessionStorage.clear();
     //This does not work, localStorage only accepts strings...
     //Solution: stringify when save, .parse when load
-    localStorage.setItem("solved",[]);
+    localStorage.setItem("solved","[]");
     
 });
 
@@ -24,23 +25,32 @@ function loadQuestion(callback){
         dataType: 'json',
         success: function(data){
             var question=[];
-            for(i = 0; i<data.skiareas[navigation[sessionStorage.nav]].length;i++)
-            {
-                if(!localStorage.solved.includes(data.skiareas[navigation[sessionStorage.nav]][i].name)){
-                    question.push(data.skiareas[navigation[sessionStorage.nav]][i].name);
-                    question.push(data.skiareas[navigation[sessionStorage.nav]][i].img);
-                    break;
+            var solved = JSON.parse(localStorage.solved);
+            if(solved.length < data.skiareas[navigation[sessionStorage.nav]].length){
+                for(i = 0; i<data.skiareas[navigation[sessionStorage.nav]].length;i++)
+                {
+                    
+                    console.log("Gelöst:"+solved);
+                    if(!solved.includes(data.skiareas[navigation[sessionStorage.nav]][i].name)){
+                        question.push(data.skiareas[navigation[sessionStorage.nav]][i].name);
+                        question.push(data.skiareas[navigation[sessionStorage.nav]][i].img);
+                        break;
+                    }
+                }
+                var i = 0;
+                while(i<3){
+                    var rnd = getRandomInt(0,data.skiareas[navigation[sessionStorage.nav]].length-1);
+                    if(!question.includes(data.skiareas[navigation[sessionStorage.nav]][rnd].name)){
+                        question.push(data.skiareas[navigation[sessionStorage.nav]][rnd].name);
+                        i++;
+                    }
+                    
                 }
             }
-            var i = 0;
-            while(i<3){
-                var rnd = getRandomInt(0,data.skiareas[navigation[sessionStorage.nav]].length-1);
-                if(!question.includes(data.skiareas[navigation[sessionStorage.nav]][rnd].name)){
-                    question.push(data.skiareas[navigation[sessionStorage.nav]][rnd].name);
-                    i++;
-                }
-                
+            else{
+                question.push("finished");
             }
+            
             callback(question);
         }
     });
@@ -50,9 +60,11 @@ function loadQuestion(callback){
 function updateContent(result){
     $('#nextbtn').hide();
     $(".correct").removeClass("correct"); 
+    if(result[0]=="finished"){
+        menu(NULL);
+    }
     var answers = [result[0], result[2], result[3], result[4]];
     sessionStorage.setItem("answer",result[0]);
-    console.log(sessionStorage.answer);
     shuffleArray(answers);
     $('#main_canvas').attr("src",result[1]);
     $('#answer-box').find('a').each(function(){
@@ -81,6 +93,14 @@ function play(){
     $("#menu").popup("close");
 }
 
+function menu(elementID){
+    $(".navigation, #welcome-text").show();
+    $("#main_canvas, #answer-box").hide();
+    console.log(elementID);
+    $("#home").removeClass(".ui-btn-active");
+    sessionStorage.clear();
+}
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -89,11 +109,23 @@ function checkAnswer(answer){
     if($(answer).text()==sessionStorage.answer){
         //Change background color to green, increase counter by one, add area to solved list
         $(answer).addClass("correct");
-       
-        //localStorage["solved"].push(sessionStorage.answer);
-        //sessionStorage.answer = "";
-        
+       var solved = JSON.parse(localStorage.solved);
+       solved.push(sessionStorage.answer);
+       localStorage.solved = JSON.stringify(solved);
+       if(localStorage.getItem(sessionStorage.nav) === null){
+           localStorage.setItem(sessionStorage.nav,"1");
+       }
+       else{
+           var score = localStorage.getItem(sessionStorage.nav);
+           score++;
+           console.log(score);
+           localStorage.setItem(sessionStorage.nav,score);
+       }
         $('#nextbtn').show();
         console.log("success");
+    }
+    else{
+        $(answer).addClass("false");
+        $('#nextbtn').show();
     }
 }
